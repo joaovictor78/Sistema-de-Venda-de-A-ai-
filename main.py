@@ -18,18 +18,18 @@ class Application:
         title = Label(widget1, fg="#642B8A", bg="white")
         title['text'] = "Universo Açaí"
         title['width'] = 15
-        title["font"] = ("Helvetica Neue", "35", "bold")
+        title["font"] = ("Helvetica", "35", "bold")
         title.place(x=0, y=0)
         title.pack()
         subtitle = Label(widget1, fg="black", bg="white")
         subtitle['text'] = "O melhor Açaí da Cidade!"
         subtitle['width'] = 20
-        subtitle["font"] = ("Helvetica Neue", "12", "italic", "bold")
+        subtitle["font"] = ("Helvetica", "12", "italic", "bold")
         subtitle.pack()
         space = Label(widget1, fg="black", bg="white")
         space['text'] = ""
         space['width'] = 20
-        space["font"] = ("Helvetica Neue", "12", "italic", "bold")
+        space["font"] = ("Helvetica", "12", "italic", "bold")
         space.pack(pady=60)
         loginButton = Button(widget1)
         imgIconRight = ImageTk.PhotoImage(file="img/rigth_icon.png")  
@@ -49,7 +49,7 @@ class Application:
         registerButton.pack ()
         copy = Label(widget1, fg="#642B8A", bg="white")
         copy['text'] = "©copyright - João Victor Bezerra da Silva - 2º ano de Informatica Matutino"
-        copy["font"] = ("Helvetica Neue", "9", "bold")
+        copy["font"] = ("Helvetica", "9", "bold")
         copy.place(x=0, y=0)
         copy.pack(pady=90)
         widget1.pack()
