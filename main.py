@@ -5,16 +5,16 @@ class Application:
         master.configure(bg="white")
         master.iconbitmap ("img/icon_aba1.ico")
         master.title("Universo Açaí - Sabor com qualidade!")
-        w = Canvas(master, borderwidth = 0, highlightthickness = 0)
-        w.configure(bg="white")
-        w.pack(expand="true")
-        widget1 = Label(w, borderwidth = 0, highlightthickness = 0)
+        globalCanvas = Canvas(master, borderwidth = 0, highlightthickness = 0)
+        globalCanvas.configure(bg="white")
+        globalCanvas.pack(expand="true")
+        widget1 = Label(globalCanvas, borderwidth = 0, highlightthickness = 0)
         widget1.configure(bg="white")
         widget1.pack(side=LEFT)
-        image = ImageTk.PhotoImage(file="img/logo.png")
-        label = Label(widget1, image=image, bg="white")
-        master.image = image
-        label.pack()
+        logoImage = ImageTk.PhotoImage(file="img/logo.png")
+        labelLogoImage = Label(widget1, image=logoImage, bg="white")
+        master.logoImage = logoImage
+        labelLogoImage.pack()
         title = Label(widget1, fg="#642B8A", bg="white")
         title['text'] = "Universo Açaí"
         title['width'] = 15
@@ -52,8 +52,7 @@ class Application:
         copy["font"] = ("Helvetica", "9", "bold")
         copy.place(x=0, y=0)
         copy.pack(pady=90)
-        widget1.pack()
-        canvas2 = Canvas(w)
+        canvas2 = Canvas(globalCanvas)
         canvas2.configure(bg="white", height=1000, width=900, borderwidth = 0, highlightthickness = 0)
          
         points = [0, 0, 250, 1000, 2000, 1000, 2000,
