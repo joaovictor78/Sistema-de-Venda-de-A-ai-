@@ -54,7 +54,6 @@ class Application:
         copy.pack(pady=90)
         canvas2 = Canvas(globalCanvas)
         canvas2.configure(bg="white", height=1000, width=900, borderwidth = 0, highlightthickness = 0)
-         
         points = [0, 0, 250, 1000, 2000, 1000, 2000,
         0,0,0]
         canvas2.create_polygon(points,  fill='#7518B2')
