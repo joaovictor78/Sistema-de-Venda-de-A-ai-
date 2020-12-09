@@ -51,7 +51,7 @@ class Cadastro(Frame):
         telefoneValue = StringVar()
         telefone = Entry(widget1, width=70, textvariable=telefoneValue)
         telefone.config(fg='grey', font = "Arial 10 italic")
-        telefone.insert(0, '  Digite seu telefone')
+        telefone.insert(0, '  Digite seu Telefone Ex:(69) 94002-8922')
         telefone.bind('<FocusIn>', lambda args: telefone.delete('0', 'end'))
         telefone.bind('<FocusOut>', lambda args: telefone.insert(0, ' Digite seu Telefone') if telefone.get() == '' else "")
         telefone.pack(pady=5)
