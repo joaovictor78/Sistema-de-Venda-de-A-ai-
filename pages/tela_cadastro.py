@@ -9,9 +9,13 @@ class Cadastro(Frame):
         validatedPhone = False
         validatedSenha = False
         validatedConfirmarSenha = False
-        def popupfunc():
+        def messageCadastro(resp, nome):
+            if(resp == 'yes'):
+                messagebox.showinfo("Cadastro de usuario", "Cadastro realizado com sucesso!\nBem vindo ao nosso delivery {}".format(nome))
+        def popupfunc(nome):
             resp = messagebox.askquestion("Cadastro de usuario",
              "Você concorda com as nossas normas e politicas de privacidade?") 
+            messageCadastro(resp, nome)
             print(resp)
         Frame.__init__(self, master)
         master.configure(bg="#7518B2")
@@ -130,4 +134,4 @@ class Cadastro(Frame):
                 validatedConfirmarSenha = True
             if(validatedName == True and validatedEmail == True and validatedPhone == True and validatedSenha == True and validatedConfirmarSenha == True):
                 print("Cadastro realizado com sucesso!")
-                popupfunc() 
+                popupfunc(nome.get()) 
