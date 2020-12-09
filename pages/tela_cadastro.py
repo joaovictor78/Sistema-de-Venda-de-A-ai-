@@ -130,4 +130,4 @@ class Cadastro(Frame):
                 validatedConfirmarSenha = True
             if(validatedName == True and validatedEmail == True and validatedPhone == True and validatedSenha == True and validatedConfirmarSenha == True):
                 print("Cadastro realizado com sucesso!")
-                
+                popupfunc() 
