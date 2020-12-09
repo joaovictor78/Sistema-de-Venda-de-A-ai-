@@ -115,6 +115,13 @@ class Cadastro(Frame):
                 email.delete('0', 'end')
                 email.configure(fg="red")
                 email.insert(0, ' Digite seu email: *Numero maximo de 256 caracteres')
+          
+            if(re.search(r"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$", email.get()) == None):
+                validatedEmail = False
+                email.delete('0', 'end')
+                email.configure(fg="red")
+                email.insert(0, ' *Error formato invalido')
+            
             else:
                 validatedEmail = True
             if(re.search(r"(?:[2-8]|9[1-9])[0-9]{3}\-[0-9]{4}$", telefone.get()) == None):
