@@ -24,14 +24,22 @@ class Cadastro(Frame):
         globalCanvas = Canvas(master, borderwidth = 0, highlightthickness = 0)
         globalCanvas.configure(bg="white")
         globalCanvas.pack(expand="true")
+        backButton = Button(master, height=18, borderwidth=0,fg="grey")
+        imgIconLeft = ImageTk.PhotoImage(file="img/arrowback.png")  
+        master.imgIconLeft = imgIconLeft
+        backButton.config(image= imgIconLeft, compound=LEFT, bg="white")
+        backButton["text"] = " Voltar "
+        backButton["font"] = ("Arial", "9")
+        backButton.place(x=12, y=12)
         widget1 = Label(globalCanvas, borderwidth = 0, highlightthickness = 0)
         widget1.configure(bg="white")
-        widget1.pack(side=LEFT)
+        widget1.pack()
         subtitle = Label(widget1, fg="black", bg="white")
         subtitle['text'] = "Cadastre-se"
         subtitle['width'] = 20
         subtitle["font"] = ("Helvetica", "13","bold")
-        subtitle.pack(pady=12)  
+        subtitle.pack(pady=12) 
+         
         nomeValue = StringVar()
         nome = Entry(widget1, width=70, textvariable=nomeValue)
         nome.configure(fg = 'grey', font = "Arial 10 italic")
