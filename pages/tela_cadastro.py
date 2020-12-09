@@ -122,7 +122,7 @@ class Cadastro(Frame):
                 senha.insert(0, ' Digite sua senha: Minimo de 8 caracteres')
             else:
                 validatedSenha = True
-            if(senhaValue == True and confirmar_senha.get() != senha.get()):
+            if(confirmar_senha.get() != senha.get()):
                 confirmar_senha.delete('0', 'end')
                 confirmar_senha.configure(fg="red")
                 confirmar_senha.insert(0, ' Erro: As senhas não coincidem!')
