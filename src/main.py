@@ -1,5 +1,6 @@
 from tkinter import *
-from pages import tela_cadastro
+from pages import tela_home, tela_cadastro
+
 class Application(Tk):
     def __init__(self):
         Tk.__init__(self)
@@ -10,8 +11,8 @@ class Application(Tk):
         new_frame = frame_class(self)
         if self._frame is not None:
             self._frame.destroy()
-        self._frame = new_frame
-        self._frame.pack()
+            self._frame = new_frame
+            self._frame.pack()
 
 if __name__ == "__main__":
     app = Application()

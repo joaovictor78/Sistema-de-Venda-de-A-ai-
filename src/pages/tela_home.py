@@ -1,6 +1,7 @@
 from tkinter import *
 from PIL import Image, ImageTk
-from tela_cadastro import Cadastro
+import importlib
+cadastro = importlib.import_module('.tela_cadastro', 'pages')
 class Home(Frame):
     def __init__(self, master):
         Frame.__init__(self, master)
@@ -41,7 +42,7 @@ class Home(Frame):
         loginButton["font"] = ("Calibri", "15")
         #loginButton["width"] = 50
         loginButton.pack (pady= 10)
-        registerButton = Button(widget1, command=lambda: master.switch_frame(Cadastro))
+        registerButton = Button(widget1, command=lambda: master.switch_frame(cadastro.Cadastro))
         imgIconEnter = ImageTk.PhotoImage(file="img/enter_icon.png")  
         master.imgIconEnter = imgIconEnter
         registerButton.config(image= imgIconEnter, compound=RIGHT, bg="#7518B2", fg="white")

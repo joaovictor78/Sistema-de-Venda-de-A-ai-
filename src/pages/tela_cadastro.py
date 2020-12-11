@@ -4,6 +4,7 @@ from PIL import Image, ImageTk
 import re 
 class Cadastro(Frame):
     def __init__(self, master):
+        Frame.__init__(self, master)
         validatedName = False
         validatedEmail = False
         validatedPhone = False
@@ -17,7 +18,7 @@ class Cadastro(Frame):
              "Você concorda com as nossas normas e politicas de privacidade?") 
             messageCadastro(resp, nome)
             print(resp)
-        Frame.__init__(self, master)
+        
         master.configure(bg="#7518B2")
         master.iconbitmap ("img/icon_aba1.ico")
         master.title("Universo Açaí - Sabor com qualidade!")
@@ -115,15 +116,21 @@ class Cadastro(Frame):
                 email.delete('0', 'end')
                 email.configure(fg="red")
                 email.insert(0, ' Digite seu email: *Numero maximo de 256 caracteres')
-          
-            if(re.search(r"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$", email.get()) == None):
+            if(('gmail.com' in email.get()) or ('hotmail.com' in email.get())):
+                if(re.search(r"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$", email.get()) == None):
+                    validatedEmail = False
+                    email.delete('0', 'end')
+                    email.configure(fg="red")
+                    email.insert(0, ' *Error formato invalido')
+            
+                else:
+                    validatedEmail = True
+            else:
                 validatedEmail = False
                 email.delete('0', 'end')
                 email.configure(fg="red")
-                email.insert(0, ' *Error formato invalido')
-            
-            else:
-                validatedEmail = True
+                email.insert(0, ' *Informe um email com extensão @homail ou @gmail. Ex: user@gmail.com')
+                email.bind('<FocusIn>', lambda args: email.delete('0', 'end'))
             if(re.search(r"(?:[2-8]|9[1-9])[0-9]{3}\-[0-9]{4}$", telefone.get()) == None):
                 telefone.delete('0', 'end')
                 telefone.configure(fg="red")
