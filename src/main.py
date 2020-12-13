@@ -3,7 +3,7 @@
 # ***** Linguagem de programação *****
 
 from tkinter import *
-from pages import tela_home, tela_cadastro
+from pages import tela_cadastro
 
 
 class Application(Tk):

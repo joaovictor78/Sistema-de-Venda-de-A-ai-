@@ -22,7 +22,7 @@ class Cadastro(Frame):
             print(resp)
         
         master.configure(bg="#7518B2")
-        master.iconbitmap ("img/icon_aba1.ico")
+        #master.iconbitmap ("img/icon_aba1.ico")
         master.title("Universo Açaí - Sabor com qualidade!")
         globalCanvas = Canvas(master, borderwidth = 0, highlightthickness = 0)
         globalCanvas.configure(bg="white")
