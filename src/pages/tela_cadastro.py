@@ -22,8 +22,6 @@ class Cadastro(Frame):
             print(resp)
         
         master.configure(bg="#7518B2")
-        #master.iconbitmap ("img/icon_aba1.ico")
-        master.title("Universo Açaí - Sabor com qualidade!")
         globalCanvas = Canvas(master, borderwidth = 0, highlightthickness = 0)
         globalCanvas.configure(bg="white")
         globalCanvas.pack(expand="true")
@@ -159,7 +157,6 @@ class Cadastro(Frame):
             if(validatedName == True and validatedEmail == True and validatedPhone == True and validatedSenha == True and validatedConfirmarSenha == True):
                 resp = popupfunc() 
                 if(resp == 'yes'):
-                    print("Cadastro realizado com sucesso!")
                     jsontest = {"nome": nome.get(), "email": email.get(), "senha" : senha.get()}
                     r = requests.post(url + '/register', json= jsontest)
                     print(r.text)

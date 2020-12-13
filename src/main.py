@@ -21,4 +21,6 @@ class Application(Tk):
 
 if __name__ == "__main__":
     app = Application()
+    app.iconbitmap("img/icon_aba1.ico")
+    app.title("Universo Açaí - Sabor com qualidade!")
     app.mainloop()

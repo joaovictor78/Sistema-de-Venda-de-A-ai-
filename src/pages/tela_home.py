@@ -5,9 +5,6 @@ cadastro = importlib.import_module('.tela_cadastro', 'pages')
 class Home(Frame):
     def __init__(self, master):
         Frame.__init__(self, master)
-        master.configure(bg="white")
-        master.iconbitmap ("img/icon_aba1.ico")
-        master.title("Universo Açaí - Sabor com qualidade!")
         globalCanvas = Canvas(master, borderwidth = 0, highlightthickness = 0)
         globalCanvas.configure(bg="white")
         globalCanvas.pack(expand="true")
