@@ -5,6 +5,7 @@
 from tkinter import *
 from pages import tela_home, tela_cadastro
 
+
 class Application(Tk):
     def __init__(self):
         Tk.__init__(self)

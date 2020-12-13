@@ -2,6 +2,9 @@ from tkinter import messagebox
 from tkinter import *
 from PIL import Image, ImageTk
 import re 
+import requests
+import json
+url = 'https://delivery-acai-server.herokuapp.com/auth'
 class Cadastro(Frame):
     def __init__(self, master):
         Frame.__init__(self, master)
@@ -10,13 +13,12 @@ class Cadastro(Frame):
         validatedPhone = False
         validatedSenha = False
         validatedConfirmarSenha = False
-        def messageCadastro(resp, nome):
-            if(resp == 'yes'):
-                messagebox.showinfo("Cadastro de usuario", "Cadastro realizado com sucesso!\nBem vindo ao nosso delivery {}".format(nome))
-        def popupfunc(nome):
+        def messageCadastro(resp):
+                messagebox.showinfo("Cadastro de usuarios", resp)
+        def popupfunc():
             resp = messagebox.askquestion("Cadastro de usuario",
              "Você concorda com as nossas normas e politicas de privacidade?") 
-            messageCadastro(resp, nome)
+            return resp
             print(resp)
         
         master.configure(bg="#7518B2")
@@ -155,5 +157,17 @@ class Cadastro(Frame):
             else:
                 validatedConfirmarSenha = True
             if(validatedName == True and validatedEmail == True and validatedPhone == True and validatedSenha == True and validatedConfirmarSenha == True):
-                print("Cadastro realizado com sucesso!")
-                popupfunc(nome.get()) 
+                resp = popupfunc() 
+                if(resp == 'yes'):
+                    print("Cadastro realizado com sucesso!")
+                    jsontest = {"nome": nome.get(), "email": email.get(), "senha" : senha.get()}
+                    r = requests.post(url + '/register', json= jsontest)
+                    print(r.text)
+                    print(r.status_code)
+                    if(r.status_code == 200):
+                        user = json.loads(r.text)
+                        mensagemBoasVindas = "Cadastro realizado com sucesso! \nBem vindo ao nosso delivery " + user["user"]["nome"].lower().capitalize()
+                        messageCadastro(mensagemBoasVindas)
+                    elif(r.status_code == 400):
+                        erro = json.loads(r.text)
+                        messageCadastro(erro["error"])
