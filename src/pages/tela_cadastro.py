@@ -5,6 +5,7 @@ import re
 import requests
 import json
 url = 'https://delivery-acai-server.herokuapp.com/auth'
+import tela_home
 class Cadastro(Frame):
     def __init__(self, master):
         Frame.__init__(self, master)
@@ -13,6 +14,10 @@ class Cadastro(Frame):
         validatedPhone = False
         validatedSenha = False
         validatedConfirmarSenha = False
+        def destruirFrame():
+            globalCanvas.destroy()
+            master.switch_frame(tela_home.Home)
+            
         def messageCadastro(resp):
                 messagebox.showinfo("Cadastro de usuarios", resp)
         def popupfunc():
@@ -25,7 +30,7 @@ class Cadastro(Frame):
         globalCanvas = Canvas(master, borderwidth = 0, highlightthickness = 0)
         globalCanvas.configure(bg="white")
         globalCanvas.pack(expand="true")
-        backButton = Button(self, height=18, borderwidth=0,fg="grey")
+        backButton = Button(master, height=18, borderwidth=0,fg="grey", command=destruirFrame)
         imgIconLeft = ImageTk.PhotoImage(file="img/arrowback.png")  
         self.imgIconLeft = imgIconLeft
         backButton.config(image= imgIconLeft, compound=LEFT, bg="white")
@@ -157,7 +162,6 @@ class Cadastro(Frame):
             if(validatedName == True and validatedEmail == True and validatedPhone == True and validatedSenha == True and validatedConfirmarSenha == True):
                 resp = popupfunc() 
                 if(resp == 'yes'):
-                    print("Cadastro realizado com sucesso!")
                     jsontest = {"nome": nome.get(), "email": email.get(), "senha" : senha.get()}
                     r = requests.post(url + '/register', json= jsontest)
                     print(r.text)

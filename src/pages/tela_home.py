@@ -5,6 +5,7 @@ import tela_cadastro
 class Home(Frame):
     def __init__(self, master):
         Frame.__init__(self, master)
+        master.configure(bg="white")
         globalCanvas = Canvas(self, borderwidth = 0, highlightthickness = 0)
         globalCanvas.configure(bg="white")
         globalCanvas.pack(expand="true")
