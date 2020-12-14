@@ -25,9 +25,9 @@ class Cadastro(Frame):
         globalCanvas = Canvas(master, borderwidth = 0, highlightthickness = 0)
         globalCanvas.configure(bg="white")
         globalCanvas.pack(expand="true")
-        backButton = Button(master, height=18, borderwidth=0,fg="grey")
+        backButton = Button(self, height=18, borderwidth=0,fg="grey")
         imgIconLeft = ImageTk.PhotoImage(file="img/arrowback.png")  
-        master.imgIconLeft = imgIconLeft
+        self.imgIconLeft = imgIconLeft
         backButton.config(image= imgIconLeft, compound=LEFT, bg="white")
         backButton["text"] = " Voltar "
         backButton["font"] = ("Arial", "9")
@@ -89,7 +89,7 @@ class Cadastro(Frame):
         space.pack(pady=60)
         registerButton = Button(widget1, command=lambda:validate())
         imgIconEnter = ImageTk.PhotoImage(file="img/enter_icon.png")  
-        master.imgIconEnter = imgIconEnter
+        self.imgIconEnter = imgIconEnter
         registerButton.config(bg="#290628", fg="white")
         registerButton["text"] = "  Cadastrar  "
         registerButton["font"] = ("Calibri", "10")
@@ -157,6 +157,7 @@ class Cadastro(Frame):
             if(validatedName == True and validatedEmail == True and validatedPhone == True and validatedSenha == True and validatedConfirmarSenha == True):
                 resp = popupfunc() 
                 if(resp == 'yes'):
+                    print("Cadastro realizado com sucesso!")
                     jsontest = {"nome": nome.get(), "email": email.get(), "senha" : senha.get()}
                     r = requests.post(url + '/register', json= jsontest)
                     print(r.text)

@@ -1,11 +1,11 @@
 from tkinter import *
 from PIL import Image, ImageTk
 import importlib
-cadastro = importlib.import_module('.tela_cadastro', 'pages')
+import tela_cadastro
 class Home(Frame):
     def __init__(self, master):
         Frame.__init__(self, master)
-        globalCanvas = Canvas(master, borderwidth = 0, highlightthickness = 0)
+        globalCanvas = Canvas(self, borderwidth = 0, highlightthickness = 0)
         globalCanvas.configure(bg="white")
         globalCanvas.pack(expand="true")
         widget1 = Label(globalCanvas, borderwidth = 0, highlightthickness = 0)
@@ -13,7 +13,7 @@ class Home(Frame):
         widget1.pack(side=LEFT)
         logoImage = ImageTk.PhotoImage(file="img/logo.png")
         labelLogoImage = Label(widget1, image=logoImage, bg="white")
-        master.logoImage = logoImage
+        self.logoImage = logoImage
         labelLogoImage.pack()
         title = Label(widget1, fg="#642B8A", bg="white")
         title['text'] = "Universo Açaí"
@@ -33,15 +33,15 @@ class Home(Frame):
         space.pack(pady=60)
         loginButton = Button(widget1)
         imgIconRight = ImageTk.PhotoImage(file="img/rigth_icon.png")  
-        master.imgIconRight = imgIconRight
+        self.imgIconRight = imgIconRight
         loginButton.config(image= imgIconRight, compound=RIGHT, bg="white")
         loginButton["text"] = "          Entrar          "
         loginButton["font"] = ("Calibri", "15")
         #loginButton["width"] = 50
         loginButton.pack (pady= 10)
-        registerButton = Button(widget1, command=lambda: master.switch_frame(cadastro.Cadastro))
+        registerButton = Button(widget1, command=lambda: master.switch_frame(tela_cadastro.Cadastro))
         imgIconEnter = ImageTk.PhotoImage(file="img/enter_icon.png")  
-        master.imgIconEnter = imgIconEnter
+        self.imgIconEnter = imgIconEnter
         registerButton.config(image= imgIconEnter, compound=RIGHT, bg="#7518B2", fg="white")
         registerButton["text"] = "       Cadastrar       "
         registerButton["font"] = ("Calibri", "15")
@@ -60,5 +60,5 @@ class Home(Frame):
         canvas2.place(y=-1)
         canvas2.pack(side= RIGHT)
         img = ImageTk.PhotoImage(file="img/acai.png")   
-        master.img = img 
+        self.img = img 
         canvas2.create_image(0,50, anchor=NW, image=img)   
