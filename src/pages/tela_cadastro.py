@@ -136,7 +136,11 @@ class Cadastro(Frame):
                 email.configure(fg="red")
                 email.insert(0, ' *Informe um email com extensão @homail ou @gmail. Ex: user@gmail.com')
                 email.bind('<FocusIn>', lambda args: email.delete('0', 'end'))
-            if(re.search(r"(?:[2-8]|9[1-9])[0-9]{3}\-[0-9]{4}$", telefone.get()) == None):
+            if(telefone.get() == '  Digite seu Telefone Ex:(69) 94002-8922'):
+                telefone.delete('0', 'end')
+                telefone.configure(fg="red")
+                telefone.insert(0, ' Digite seu Telefone Ex:(xx) xxxxx-xxxx *Campo obrigatorio')
+            elif(re.search(r"(?:[2-8]|9[1-9])[0-9]{3}\-[0-9]{4}$", telefone.get()) == None):
                 telefone.delete('0', 'end')
                 telefone.configure(fg="red")
                 telefone.insert(0, ' Digite seu Telefone Ex:(xx) xxxxx-xxxx *Telefone invalido ')
