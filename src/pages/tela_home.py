@@ -1,7 +1,7 @@
 from tkinter import *
 from PIL import Image, ImageTk
 import importlib
-import tela_cadastro
+import tela_cadastro, tela_login
 class Home(Frame):
     def __init__(self, master):
         Frame.__init__(self, master)
@@ -32,7 +32,7 @@ class Home(Frame):
         space['width'] = 20
         space["font"] = ("Helvetica", "12", "italic", "bold")
         space.pack(pady=60)
-        loginButton = Button(widget1)
+        loginButton = Button(widget1, command=lambda: master.switch_frame(tela_login.Login))
         imgIconRight = ImageTk.PhotoImage(file="img/rigth_icon.png")  
         self.imgIconRight = imgIconRight
         loginButton.config(image= imgIconRight, compound=RIGHT, bg="white")

@@ -95,10 +95,11 @@ class Cadastro(Frame):
         registerButton = Button(widget1, command=lambda:validate())
         imgIconEnter = ImageTk.PhotoImage(file="img/enter_icon.png")  
         self.imgIconEnter = imgIconEnter
-        registerButton.config(bg="#290628", fg="white")
+        registerButton.config(bg="#290628", fg="white", width=12)
         registerButton["text"] = "  Cadastrar  "
-        registerButton["font"] = ("Calibri", "10")
+        registerButton["font"] = ("Calibri", "11")
         registerButton.pack()
+    
         space = Label(widget1, fg="black", bg="white")
         space['text'] = ""
         space['width'] = 20
@@ -166,14 +167,13 @@ class Cadastro(Frame):
             if(validatedName == True and validatedEmail == True and validatedPhone == True and validatedSenha == True and validatedConfirmarSenha == True):
                 resp = popupfunc() 
                 if(resp == 'yes'):
-                    jsontest = {"nome": nome.get(), "email": email.get(), "senha" : senha.get()}
-                    r = requests.post(url + '/register', json= jsontest)
+                    jsonCadastro = {"nome": nome.get(), "email": email.get(), "senha" : senha.get()}
+                    r = requests.post(url + '/register', json= jsonCadastro)
                     print(r.text)
                     print(r.status_code)
+                    responseFromJson = json.loads(r.text)
                     if(r.status_code == 200):
-                        user = json.loads(r.text)
-                        mensagemBoasVindas = "Cadastro realizado com sucesso! \nBem vindo ao nosso delivery " + user["user"]["nome"].lower().capitalize()
+                        mensagemBoasVindas = "Cadastro realizado com sucesso! \nBem vindo ao nosso delivery " + responseFromJson["user"]["nome"].lower().capitalize()
                         messageCadastro(mensagemBoasVindas)
                     elif(r.status_code == 400):
-                        erro = json.loads(r.text)
-                        messageCadastro(erro["error"])
+                        messageCadastro(responseFromJson["error"])
